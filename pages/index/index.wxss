@@ -1,0 +1,48 @@
+
+/* .userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}  */
+
+
+.navBar{
+   background: linear-gradient(to bottom, rgb(27, 170, 233), rgb(24,147,210)); /*渐变样式 */
+  width:100%;
+  position: fixed;
+  top: 0rpx;
+  height: 210rpx;
+  z-index: 10;
+}
+
+.head{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10rpx 30rpx;
+  margin-top:40rpx;
+  font-size: 28rpx;
+  color:rgba(244, 244, 244, 0.9);
+}
+
+.icon{
+  height:60rpx;
+  width:60rpx;
+  margin-right:20rpx;
+}
+
