@@ -18,6 +18,6 @@
          快读 资讯
     </view>
        <view class='navTags'>
-              <view wx:for='{{ tags }}' wx:key='*this'  bindtap='onChange'>{{item}}</view>
+              <view wx:for='{{ tags }}' wx:key='*this'  data-id='{{index}}'                   bindtap='onChange'>{{item}}</view>
        </view>
 </view>

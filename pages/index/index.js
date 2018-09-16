@@ -2,6 +2,7 @@
 //获取应用实例
 const api=require('../../utils/util.js')
 const app = getApp()
+const moment =require('../../utils/moment-with-locales.min.js')
 
 Page({
   data: {
@@ -18,7 +19,8 @@ Page({
       'ty':'体育',
       'other':'其他'
     },
-    currentTages:'gn'
+    currentTag:'gn',
+    newList:[],
   },
   //事件处理函数
   // bindViewTap: function() {
@@ -69,25 +71,26 @@ Page({
   // })
   onChange:function(event){
     var tag = event.currentTarget.dataset.id
-    this.showNews(tag)
+    this.showFindTag(tag)
+    console.log(event.currentTarget.dataset.id)
   },
   showFindTag:function(tag){
-    return api.findTag(tag)
-  },
-  showNews:function(tag){
-    return this.showFindTag
-    .then(res => {
-      console.log(res)
-    }).catch(e => {
-      console.log(e)
+    return api.findTag(tag).then(res => {
+      res.result=res.result.map(n=>{
+        n.date = moment(n.date).locale('zh-cn').format("YYYYMMMMDo, H:mm:ss a")
+        n.source = (n.source) || '未知来源'
+        console.log(n)
+        return n
+      })
+      this.setData({
+        newList:res.result,
+        currentTag:tag
+      })
     })
+  },
+  onLoad:function(options){
+    this.showFindTag(this.data.currentTag)
   }
-
-
-})
-api.findTag('gn').then(res => {
-  console.log(res)
-}).catch(e => {
-  console.log(e)
 })
 
+ 
