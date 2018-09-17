@@ -18,6 +18,25 @@
          快读 资讯
     </view>
        <view class='navTags'>
-              <view wx:for='{{ tags }}' wx:key='*this'  data-id='{{index}}'                   bindtap='onChange'>{{item}}</view>
+              <view wx:for='{{ tags }}'
+                wx:key='*this' 
+                data-id='{{index}}'                   
+                bindtap='onChange'  
+               class="tagTitle {{index == currentTag? 'tagActive':''}}">{{item}}        </view>
        </view>
+</view>
+<view class='body'>
+  <view class='newsList'  wx:for='{{newList}}'>
+   <view class='newLeft' bindtap=''>
+      <view class='newLeftTitle'>{{item.title}}</view>
+      <view class='DS'>
+          <view class='newLeftDate'>{{item.source}}</view>
+          <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+          <view class='newLeftSourese'>{{item.date}}</view>
+      </view>
+   </view>
+   <view class='newRight'>
+      <image  class='firstImage' src='{{item.firstImage}}'></image>
+   </view>
+  </view>
 </view>

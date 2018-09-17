@@ -71,13 +71,13 @@ Page({
   // })
   onChange:function(event){
     var tag = event.currentTarget.dataset.id
-    this.showFindTag(tag)
+    this.showNewsList(tag)
     console.log(event.currentTarget.dataset.id)
   },
-  showFindTag:function(tag){
+  showNewsList:function(tag){
     return api.findTag(tag).then(res => {
       res.result=res.result.map(n=>{
-        n.date = moment(n.date).locale('zh-cn').format("YYYYMMMMDo, H:mm:ss a")
+        n.date = moment(n.date).locale('zh-cn').format("YYYYMMMMDo, H:mm:ss ")
         n.source = (n.source) || '未知来源'
         console.log(n)
         return n
@@ -89,7 +89,7 @@ Page({
     })
   },
   onLoad:function(options){
-    this.showFindTag(this.data.currentTag)
+    this.showNewsList(this.data.currentTag)
   }
 })
 
