@@ -1,22 +1,4 @@
-// const formatTime = date => {
-//   const year = date.getFullYear()
-//   const month = date.getMonth() + 1
-//   const day = date.getDate()
-//   const hour = date.getHours()
-//   const minute = date.getMinutes()
-//   const second = date.getSeconds()
 
-//   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-// }
-
-// const formatNumber = n => {
-//   n = n.toString()
-//   return n[1] ? n : '0' + n
-// }
-
-// module.exports = {
-//   formatTime: formatTime
-// }
 /* utils/api.js  自定义网络请求 */
 const baseURL = 'https://test-miniprogram.com' // 自己后台API地址
 const http = ({ url = '', params = {}, ...other } = {}) => {
@@ -63,7 +45,12 @@ const getHeader = () => {
 module.exports = {
   baseURL,
   findTag(tag){
+      //新闻列表页api
    return this.get('/api/news/list?type='+tag)
+  },
+  findDetail(id){
+    //新闻详情页api
+    return this.get('/api/news/detail?id='+id)
   },
   get(url, params = {}) {
     return http({
@@ -71,27 +58,5 @@ module.exports = {
       params
     })
   }
-  // post(url, params = {}) {
-  //   return http({
-  //     url,
-  //     params,
-  //     method: 'post'
-  //   })
-  // },
-  // put(url, params = {}) {
-  //   return http({
-  //     url,
-  //     params,
-  //     method: 'put'
-  //   })
-  // },
-  // 这里不能使用 delete, delete为关键字段
-  // myDelete(url, params = {}) {
-  //   return http({
-  //     url,
-  //     params,
-  //     method: 'delete'
-  //   })
-  // }
 }
 

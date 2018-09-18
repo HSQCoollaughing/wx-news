@@ -30,15 +30,6 @@
   z-index: 10;
 }
 
-.head{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 10rpx 30rpx;
-  margin-top:40rpx;
-  font-size: 28rpx;
-  color:rgba(244, 244, 244, 0.9);
-}
 
 .icon{
   height:60rpx;
@@ -100,8 +91,9 @@
 }
 .newLeft{
   float: left;
-  width: 67%;
-  font-size: 15px;
+  width: 65%;
+  margin: 5px;
+  font-size: 17px;
 }
 /* .newRighth{
 
@@ -113,10 +105,13 @@
   float: right; 
 }
 .DS{
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
-  font-size: 10px;
+  font-size: 13px;
   color: darkgray;
+}
+.index{
+  margin-top: 110px;
 }
 
 

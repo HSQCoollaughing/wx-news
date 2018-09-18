@@ -1,0 +1,23 @@
+<view class='navBar' >
+<view class='head'>
+  <image class='barImage' src='../../images/left-arrow.png'  bindtap='navBack'></image>
+   快读 资讯
+</view>
+</view>
+<view class='title'>
+   <view class='newsDetailTitle'>{{detail.title}}</view>
+   <view class='DS'>
+     <view class='newsDetailSource'>{{detail.source}}</view>
+     <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+     <view class='newsDetailData'>{{detail.date}}</view>
+     <view class='newsRead'>阅读:{{detail.readCount}}</view>
+   </view>
+</view>
+<view class='news-content'>
+  <block wx:for='{{detail.content}}' wx:key='id'>
+      <div wx:if='{{item.type == "strong"}}'><strong>{{item.text}}</strong></div>
+      <div wx:elif='{{item.type == "p"}}'><p>{{item.text}}</p></div>
+      <div wx:elif='{{item.type == "image"}}'><image src="{{item.src}}"></image></div>
+      <div wx:else>{{item.type}}{{item.text}}</div>
+    </block>
+</view>

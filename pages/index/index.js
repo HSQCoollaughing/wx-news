@@ -1,9 +1,12 @@
 //index.js
-//获取应用实例
+//还差一个下拉刷新上拉加载....QAQ
+
+
+
 const api=require('../../utils/util.js')
 const app = getApp()
 const moment =require('../../utils/moment-with-locales.min.js')
-
+//moment.js json数据处理函数
 Page({
   data: {
     motto: 'Hello World',
@@ -22,75 +25,41 @@ Page({
     currentTag:'gn',
     newList:[],
   },
-  //事件处理函数
-  // bindViewTap: function() {
-  //   wx.navigateTo({
-  //     url: '../logs/logs'
-  //   })
-  // },
-  // onLoad: function () {
-  //   if (app.globalData.userInfo) {
-  //     this.setData({
-  //       userInfo: app.globalData.userInfo,
-  //       hasUserInfo: true
-  //     })
-  //   } else if (this.data.canIUse){
-  //     // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-  //     // 所以此处加入 callback 以防止这种情况
-  //     app.userInfoReadyCallback = res => {
-  //       this.setData({
-  //         userInfo: res.userInfo,
-  //         hasUserInfo: true
-  //       })
-  //     }
-  //   } else {
-  //     // 在没有 open-type=getUserInfo 版本的兼容处理
-  //     wx.getUserInfo({
-  //       success: res => {
-  //         app.globalData.userInfo = res.userInfo
-  //         this.setData({
-  //           userInfo: res.userInfo,
-  //           hasUserInfo: true
-  //         })
-  //       }
-  //     })
-  //   }
-  // },
-  // getUserInfo: function(e) {
-  //   console.log(e)
-  //   app.globalData.userInfo = e.detail.userInfo
-  //   this.setData({
-  //     userInfo: e.detail.userInfo,
-  //     hasUserInfo: true
-  //   })
-  // }
-  // api.get('list').then(res=>{
-  //   console.log(res)
-  // }).catch(e=>{
-  //   console.log(e)
-  // })
+  
+  newDetial:function(event){
+    // console.log(event.currentTarget.dataset.newsid)
+      wx.navigateTo({
+      url: '../logs/logs?id=' + event.currentTarget.dataset.newsid
+    //由列表页跳转到详情页 ,需要传入点击事件的id
+    })
+  },
   onChange:function(event){
     var tag = event.currentTarget.dataset.id
     this.showNewsList(tag)
-    console.log(event.currentTarget.dataset.id)
+     //导航栏获取tag传值,获取新闻列表页的json数据
+    // console.log(event.currentTarget.dataset.id)
   },
   showNewsList:function(tag){
     return api.findTag(tag).then(res => {
       res.result=res.result.map(n=>{
+        //处理由newslist 的json数据
         n.date = moment(n.date).locale('zh-cn').format("YYYYMMMMDo, H:mm:ss ")
         n.source = (n.source) || '未知来源'
-        console.log(n)
+        // console.log(n)
         return n
       })
       this.setData({
+        //传数据给页面展示
         newList:res.result,
         currentTag:tag
       })
     })
   },
   onLoad:function(options){
-    this.showNewsList(this.data.currentTag)
+    this.showNewsList(this.data.currentTag) 
+    //页面默认加载的导航栏为'国内':)
   }
 })
+
 
  

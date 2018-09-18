@@ -25,9 +25,10 @@
                class="tagTitle {{index == currentTag? 'tagActive':''}}">{{item}}        </view>
        </view>
 </view>
-<view class='body'>
-  <view class='newsList'  wx:for='{{newList}}'>
-   <view class='newLeft' bindtap=''>
+<view class='index'>
+ <view class='content'>
+ <view class='newsList'  wx:for='{{newList}}' wx:key='*this'>
+   <view class='newLeft' bindtap='newDetial' data-newsid='{{item.id}}'>
       <view class='newLeftTitle'>{{item.title}}</view>
       <view class='DS'>
           <view class='newLeftDate'>{{item.source}}</view>
@@ -39,4 +40,7 @@
       <image  class='firstImage' src='{{item.firstImage}}'></image>
    </view>
   </view>
+ </view>
 </view>
+ 
+   
