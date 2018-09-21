@@ -4,10 +4,11 @@
     "pages/logs/logs"
   ],
   "window":{
-    "backgroundTextStyle":"",
-    "navigationBarBackgroundColor": " ",
-    "navigationBarTitleText": "",
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": " #8bc34a",
+    "navigationBarTitleText": "hhhh",
     "navigationBarTextStyle":"black",
-    "navigationStyle":"custom"
+    "navigationStyle":"custom",
+    "enablePullDownRefresh":true
   }
 }
