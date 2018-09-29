@@ -57,7 +57,7 @@ Page({
   },
   onLoad:function(options){
     this.showNewsList(this.data.currentTag) 
-    //页面默认加载的导航栏为'国内':)
+    //页面默认加载的导航栏为'国内':     )
   }
 })
 
